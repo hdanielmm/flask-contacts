@@ -7,7 +7,9 @@ contacts = Blueprint('contacts', __name__)
 
 @contacts.route('/')
 def home():
-    return render_template('index.html')
+    contacts = Contact.query.all()
+    print(contacts)
+    return render_template('index.html', contacts=contacts)
 
 
 @contacts.route('/new', methods=['POST'])
@@ -26,10 +28,10 @@ def add_contact():
 
 
 @contacts.route('/update')
-def update_contacts():
-    pass
+def update():
+    return 'Update contact'
 
 
 @contacts.route('/delete/<int:id>')
 def delete(id):
-    pass
+    return 'Delete contact'
